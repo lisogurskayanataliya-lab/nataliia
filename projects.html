@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nataliia Lisohurska — Projects</title>
+  <meta name="description" content="Selected projects by Nataliia Lisohurska, organized for supply/partner-operations and retail-media/campaign-operations roles — onboarding, compliance, cost impact, media planning, and operational tooling.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:        #120E24;  /* deep indigo night */
+      --bg-2:      #17123020;
+      --panel:     #1B1638;  /* raised panel */
+      --panel-2:   #221C46;  /* hover panel */
+      --ink:       #F6F1EC;  /* warm off-white */
+      --ink-soft:  #DFD7E8;
+      --muted:     #A99FC4;  /* soft lavender-grey */
+      --faint:     #6E6690;  /* dim indigo-grey */
+      --gold:      #F5CF4C;  /* glowing doorway gold */
+      --orange:    #F2863C;  /* warm terrain */
+      --red:       #EE4E45;  /* coral / thermal red */
+      --blue:      #4B5BD0;  /* indigo glow */
+      --border:    rgba(246,241,236,0.10);
+      --border-2:  rgba(246,241,236,0.16);
+      --thermal:   linear-gradient(100deg, var(--gold), var(--orange) 55%, var(--red));
+      --max:       1080px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    /* atmospheric glows — the doorway light + thermal floor + stars */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(46% 38% at 50% -6%, rgba(245,207,76,0.20), transparent 62%),
+        radial-gradient(40% 30% at 50% -2%, rgba(75,91,208,0.22), transparent 70%),
+        radial-gradient(70% 42% at 50% 116%, rgba(238,78,69,0.16), transparent 68%),
+        radial-gradient(50% 34% at 82% 88%, rgba(242,134,60,0.12), transparent 70%),
+        radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 78% 12%, rgba(255,255,255,0.40), transparent),
+        radial-gradient(1px 1px at 40% 8%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1px 1px at 90% 30%, rgba(255,255,255,0.30), transparent),
+        radial-gradient(1px 1px at 22% 42%, rgba(255,255,255,0.25), transparent);
+    }
+
+    /* film grain overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .wrap { position: relative; z-index: 1; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ---- eyebrow / mono labels ---- */
+    .eyebrow {
+      font-family: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 22px; height: 1px;
+      background: var(--thermal);
+      display: inline-block;
+    }
+
+    /* ---- top bar ---- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(18,14,36,0.62);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s ease, background .3s ease;
+    }
+    .topbar.scrolled { border-color: var(--border); background: rgba(18,14,36,0.82); }
+    .topbar .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em;
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--ink);
+    }
+    .brand .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--thermal);
+      box-shadow: 0 0 14px 2px rgba(245,207,76,0.55);
+    }
+    .topnav { display: flex; gap: 30px; align-items: center; }
+    .topnav a {
+      font-size: 0.9rem; color: var(--muted);
+      text-decoration: none; transition: color .2s ease;
+    }
+    .topnav a:hover { color: var(--ink); }
+    .topnav a.current { color: var(--ink); }
+    .topnav .btn-sm {
+      font-family: "Fragment Mono", monospace;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #1a1330; background: var(--thermal);
+      padding: 10px 16px; border-radius: 999px;
+      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 20px rgba(242,134,60,0.28);
+    }
+    .topnav .btn-sm:hover { transform: translateY(-1px); color: #1a1330; }
+    @media (max-width: 720px) { .topnav .nav-link { display: none; } }
+
+    /* ---- hero ---- */
+    .hero {
+      position: relative;
+      padding: 118px 0 60px;
+      text-align: center;
+    }
+    .arch {
+      position: absolute;
+      top: 40px; left: 50%; transform: translateX(-50%);
+      width: min(300px, 62vw); height: 420px;
+      border-radius: 150px 150px 22px 22px;
+      background: linear-gradient(180deg, rgba(245,207,76,0.85), rgba(242,134,60,0.55) 62%, rgba(238,78,69,0.20));
+      filter: blur(46px);
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 600; line-height: 1.03; letter-spacing: -0.035em;
+      margin: 24px 0 0;
+    }
+    .hero h1 .em {
+      font-style: italic; font-weight: 400;
+      background: var(--thermal);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero .lede {
+      max-width: 640px; margin: 24px auto 0;
+      font-size: 1.12rem; color: var(--muted); font-weight: 300;
+    }
+
+    /* ---- section blocks ---- */
+    section.block { padding: 64px 0; position: relative; }
+    .section-head { max-width: 720px; }
+    .section-head h2 {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 600; letter-spacing: -0.03em; line-height: 1.12;
+      margin: 16px 0 0;
+    }
+    .section-head .track-sub {
+      margin-top: 14px; font-size: 1.04rem; color: var(--muted); font-weight: 300;
+    }
+
+    /* ---- projects grid ---- */
+    .projects { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    @media (max-width: 760px) { .projects { grid-template-columns: 1fr; } }
+
+    .project {
+      position: relative;
+      display: flex; flex-direction: column;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 28px 26px;
+      transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease;
+      overflow: hidden;
+    }
+    .project::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--thermal); opacity: .8;
+    }
+    .project::after {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(120% 90% at 100% 0%, rgba(242,134,60,0.10), transparent 55%);
+      opacity: 0; transition: opacity .35s ease; pointer-events: none;
+    }
+    .project:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-2);
+      box-shadow: 0 20px 44px rgba(8,5,20,0.5);
+    }
+    .project:hover::after { opacity: 1; }
+
+    .project .num {
+      font-family: "Fragment Mono", monospace; font-size: 0.72rem;
+      letter-spacing: 0.14em; color: var(--faint);
+    }
+    .project h3 {
+      font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em;
+      margin-top: 8px; line-height: 1.2;
+    }
+    .project .metric {
+      display: inline-flex; align-self: flex-start; margin-top: 12px;
+      font-family: "Fragment Mono", monospace; font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      background: rgba(245,207,76,0.08);
+      border: 1px solid rgba(245,207,76,0.28);
+      padding: 5px 12px; border-radius: 999px;
+    }
+    .project p {
+      margin-top: 14px; font-size: 0.98rem; color: var(--muted); font-weight: 300;
+    }
+    .project p b { color: var(--ink); font-weight: 600; }
+    .project .maps {
+      margin-top: auto; padding-top: 18px;
+      border-top: 1px solid var(--border);
+      font-family: "Fragment Mono", monospace; font-size: 0.74rem;
+      letter-spacing: 0.02em; color: var(--ink-soft); line-height: 1.5;
+    }
+    .project .maps span {
+      color: var(--orange); margin-right: 8px;
+    }
+    .project:not(:last-child) .maps { }
+
+    /* keep the maps pinned to bottom even without metric */
+    .project .body { flex: 1 0 auto; }
+
+    /* ---- back / CTA ---- */
+    .cta {
+      text-align: center;
+      background: linear-gradient(165deg, var(--panel-2), #140f2c);
+      border: 1px solid var(--border);
+      border-radius: 28px; padding: 72px 32px;
+      position: relative; overflow: hidden;
+    }
+    .cta::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(46% 70% at 50% -12%, rgba(245,207,76,0.30), transparent 62%),
+        radial-gradient(70% 80% at 50% 130%, rgba(238,78,69,0.28), transparent 66%);
+      pointer-events: none;
+    }
+    .cta .inner { position: relative; z-index: 1; }
+    .cta h2 {
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin: 20px 0 0;
+    }
+    .cta h2 .em {
+      font-style: italic; font-weight: 400;
+      background: var(--thermal);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .cta p {
+      max-width: 500px; margin: 20px auto 0;
+      color: var(--muted); font-weight: 300; font-size: 1.04rem;
+    }
+    .cta .contact-links {
+      margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    }
+    .btn {
+      font-size: 0.95rem; font-weight: 500; text-decoration: none;
+      padding: 14px 26px; border-radius: 999px;
+      transition: transform .2s ease, box-shadow .25s ease, background .2s ease;
+      display: inline-flex; align-items: center; gap: 9px;
+    }
+    .btn-primary {
+      background: var(--thermal); color: #1a1330;
+      box-shadow: 0 10px 30px rgba(242,134,60,0.30);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(242,134,60,0.42); color: #1a1330; }
+    .btn-ghost {
+      background: transparent; color: var(--ink);
+      border: 1px solid var(--border-2);
+    }
+    .btn-ghost:hover { transform: translateY(-2px); background: rgba(246,241,236,0.06); }
+
+    /* footer */
+    footer {
+      padding: 46px 0 60px;
+      border-top: 1px solid var(--border);
+      margin-top: 72px;
+    }
+    footer .container {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    footer .copy { color: var(--faint); font-size: 0.86rem; }
+    footer .made {
+      font-family: "Fragment Mono", monospace; font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
+    }
+
+    /* ---- entrance animations ---- */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .9s cubic-bezier(.44,0,.56,1), transform .9s cubic-bezier(.44,0,.56,1);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; } .d2 { transition-delay: .18s; }
+    .d3 { transition-delay: .30s; } .d4 { transition-delay: .42s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+    @media (max-width: 620px) {
+      .container { padding: 0 22px; }
+      .project { padding: 26px 24px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar" id="topbar">
+      <div class="container">
+        <a href="index.html#top" class="brand"><span class="dot"></span> Nataliia Lisohurska</a>
+        <nav class="topnav">
+          <a href="index.html#summary" class="nav-link">Summary</a>
+          <a href="index.html#experience" class="nav-link">Experience</a>
+          <a href="projects.html" class="nav-link current">Projects</a>
+          <a href="mailto:lisohurska.n@gmail.com" class="btn-sm">Get in touch</a>
+        </nav>
+      </div>
+    </div>
+
+    <header class="hero" id="top">
+      <div class="arch" aria-hidden="true"></div>
+      <div class="container">
+        <span class="eyebrow reveal in">Projects</span>
+        <h1 class="reveal in d1">Selected work,<br>built for the <span class="em">role.</span></h1>
+        <p class="lede reveal in d2">The same body of work, framed two ways — for supply &amp; partner-operations
+          roles that onboard and run a marketplace, and for retail-media &amp; campaign-operations roles that
+          plan spend and grow audiences.</p>
+      </div>
+    </header>
+
+    <!-- ============ SUPPLY MANAGEMENT ============ -->
+    <section class="block" id="supply">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Track 01 · Supply &amp; Partner Operations</span>
+          <h2>Onboarding &amp; managing marketplace partners.</h2>
+          <p class="track-sub">Getting operators onto the platform, keeping the base compliant, defending
+            margin, and building the tooling that makes a growing partner network run — the core of a
+            marketplace supply org.</p>
+        </div>
+
+        <div class="projects">
+
+          <article class="project reveal d1">
+            <div class="body">
+              <div class="num">S01</div>
+              <h3>Vendor Lifecycle &amp; Compliance Management</h3>
+              <p>Owned end-to-end onboarding of new suppliers onto enterprise platforms
+                (<b>Concur</b>, <b>Navan</b>) and maintained compliance across the full vendor base —
+                the same motion as activating and governing operators on a marketplace.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Onboarding operators onto the marketplace</div>
+          </article>
+
+          <article class="project reveal d2">
+            <div class="body">
+              <div class="num">S02</div>
+              <h3>Hotel &amp; Travel Supplier Renegotiation</h3>
+              <span class="metric">$200K saved · 18% spend ↓</span>
+              <p>Renegotiated hotel and travel supplier contracts, cutting spend <b>18%</b> and saving
+                <b>$200K</b>. Supply and vendor roles live and die by cost and margin impact — this is
+                the strongest number for the track.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Cost &amp; margin ownership across the supply base</div>
+          </article>
+
+          <article class="project reveal d1">
+            <div class="body">
+              <div class="num">S03</div>
+              <h3>Automated Expense Auditor</h3>
+              <p>Built automated compliance and quality-check tooling that audited partner submissions
+                at scale — replacing manual review with a repeatable QA process that marketplace supply
+                teams depend on.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Scalable QA for partner submissions</div>
+          </article>
+
+          <article class="project reveal d2">
+            <div class="body">
+              <div class="num">S04</div>
+              <h3>Payment Access Expansion</h3>
+              <p>Closed a payment-access gap so underserved regions and partners could transact —
+                getting more partners fully operational in more markets. Close to a real global
+                supply-expansion story.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Global supply expansion &amp; market activation</div>
+          </article>
+
+          <article class="project reveal d1">
+            <div class="body">
+              <div class="num">S05</div>
+              <h3>Cross-Team Program Management Platform</h3>
+              <p>Partnered with <b>IT</b> to build an internal platform giving teams real-time visibility
+                into partner and program status — proof I can build partner-ops tooling at scale, not
+                just operate it.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Internal tooling for partner-status visibility</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEDIA MANAGEMENT ============ -->
+    <section class="block" id="media">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Track 02 · Retail Media &amp; Campaign Operations</span>
+          <h2>Planning spend &amp; growing audiences.</h2>
+          <p class="track-sub">Media planning, budget optimization, partner-facing systems, on-ground
+            activation, and the automation mindset that modern retail-media teams increasingly expect.</p>
+        </div>
+
+        <div class="projects">
+
+          <article class="project reveal d1">
+            <div class="body">
+              <div class="num">M01</div>
+              <h3>Campaign &amp; Media Budget Management</h3>
+              <p>Planned and optimized media budgets across <b>PR</b>, <b>KOL</b>, and <b>newsletter</b>
+                channels at VaultCraft — direct, hands-on media-planning ownership and the most literal
+                evidence for the track.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Media planning &amp; budget optimization</div>
+          </article>
+
+          <article class="project reveal d2">
+            <div class="body">
+              <div class="num">M02</div>
+              <h3>CRM Implementation — Affinity</h3>
+              <span class="metric">+40% pipeline visibility</span>
+              <p>Implemented and owned <b>Affinity CRM</b>, lifting pipeline visibility <b>40%</b>.
+                Media-ops roles increasingly want CRM / ad-platform fluency — this is systems ownership,
+                not just spreadsheet tracking.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Media-ops platform &amp; systems ownership</div>
+          </article>
+
+          <article class="project reveal d1">
+            <div class="body">
+              <div class="num">M03</div>
+              <h3>Conference Event Activations</h3>
+              <span class="metric">40K+ subscribers</span>
+              <p>Ran on-ground event activations at major conferences, driving <b>40K+</b> newsletter
+                subscribers — the audience-growth and brand-partnership accountability these roles carry.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>On-ground activation &amp; audience growth</div>
+          </article>
+
+          <article class="project reveal d2">
+            <div class="body">
+              <div class="num">M04</div>
+              <h3>AI-Powered Spend Policy Assistant</h3>
+              <p>Built an internal AI assistant that scaled a manual policy process — evidence of the
+                automation-minded approach media teams increasingly value, even outside pure supply roles.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Internal tooling to scale a process</div>
+          </article>
+
+          <article class="project reveal d1">
+            <div class="body">
+              <div class="num">M05</div>
+              <h3>Participant Retention &amp; Repeat Enrollment</h3>
+              <p>Drove repeat enrollment and participant retention at <b>IESE</b> — an early signal of
+                audience &amp; customer-lifecycle thinking that maps to retail media's brand-repeat-spend
+                logic.</p>
+            </div>
+            <div class="maps"><span>Maps to →</span>Audience &amp; customer-lifecycle thinking</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="inner">
+            <span class="eyebrow">Contact</span>
+            <h2>Let's talk about the <span class="em">right</span> track.</h2>
+            <p>Whether it's supply onboarding or media operations, happy to walk through any of these
+              in depth — the process, the tooling, and the impact.</p>
+            <div class="contact-links">
+              <a href="mailto:lisohurska.n@gmail.com" class="btn btn-primary">Email me</a>
+              <a href="index.html#top" class="btn btn-ghost">Back to overview</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <span class="copy">© 2026 Nataliia Lisohurska. All rights reserved.</span>
+        <span class="made">Barcelona · Operations &amp; Growth</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const bar = document.getElementById('topbar');
+    const onScroll = () => bar.classList.toggle('scrolled', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
