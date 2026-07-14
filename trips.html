@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mallorca · Girls Trip 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F2E6C9;
+    --paper-deep: #E9DAB3;
+    --ink: #23313A;
+    --azul: #1E5B6C;
+    --azul-deep: #123B47;
+    --terracotta: #B65A38;
+    --ochre: #D8A83E;
+    --olive: #6E7A48;
+    --night: #17222B;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(182,90,56,0.05), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(30,91,108,0.06), transparent 45%);
+    color:var(--ink);
+    font-family:'Lora', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- utility icons ---------- */
+  .icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;flex-shrink:0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg,var(--azul) 0%, var(--azul-deep) 100%);
+    color:var(--paper);
+    padding:4.5rem 1.5rem 6.5rem;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero .sun{
+    position:absolute;
+    top:-90px; right:-60px;
+    width:260px;height:260px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, var(--ochre), #b9852a 75%);
+    opacity:0.9;
+  }
+  .hero .sun::after{
+    content:"";
+    position:absolute; inset:22px;
+    border-radius:50%;
+    border:1.5px dashed rgba(35,49,58,0.35);
+  }
+  .hero-content{position:relative; z-index:2; max-width:640px; margin:0 auto;}
+  .eyebrow{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--ochre);
+    margin-bottom:1.1rem;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(3.4rem, 12vw, 6.5rem);
+    line-height:0.9;
+    margin:0 0 0.6rem;
+    letter-spacing:-0.01em;
+  }
+  .hero-sub{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.28em;
+    font-size:0.95rem;
+    color:rgba(242,230,201,0.85);
+    margin-bottom:2rem;
+  }
+  .date-ticket{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    border:1.5px dashed rgba(242,230,201,0.55);
+    border-radius:999px;
+    padding:0.55rem 1.4rem;
+    font-family:'Barlow Semi Condensed', sans-serif;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-size:0.85rem;
+    font-weight:600;
+  }
+  .date-ticket .icon{width:16px;height:16px;}
+
+  .coastline{
+    position:absolute; left:0; right:0; bottom:-1px;
+    width:100%; height:70px;
+    display:block;
+  }
+
+  .note{
+    max-width:520px;
+    margin:2.8rem auto 0;
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:2px;
+    padding:1.5rem 1.8rem 1.3rem;
+    transform:rotate(-1.3deg);
+    box-shadow:0 14px 30px rgba(18,59,71,0.28);
+    position:relative;
+    z-index:3;
+  }
+  .note::before{
+    content:"";
+    position:absolute; top:-10px; left:50%;
+    transform:translateX(-50%) rotate(-8deg);
+    width:64px; height:22px;
+    background:rgba(216,168,62,0.55);
+  }
+  .note p{
+    font-family:'Caveat', cursive;
+    font-size:1.65rem;
+    line-height:1.35;
+    margin:0;
+    font-weight:600;
+  }
+  .note .sign{
+    display:block;
+    text-align:right;
+    margin-top:0.3rem;
+    font-size:1.55rem;
+  }
+
+  /* ---------- ESSENTIALS STRIP ---------- */
+  .essentials{
+    max-width:920px;
+    margin:-2.4rem auto 0;
+    position:relative;
+    z-index:3;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1rem;
+    padding:0 1.5rem;
+  }
+  .chip{
+    background:var(--paper);
+    border:1.5px dashed rgba(35,49,58,0.35);
+    border-radius:10px;
+    padding:1rem 1.1rem;
+    text-align:center;
+    box-shadow:0 6px 16px rgba(23,34,43,0.12);
+  }
+  .chip .icon{color:var(--terracotta); margin-bottom:0.4rem;}
+  .chip-label{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.68rem;
+    font-weight:600;
+    color:var(--azul-deep);
+    margin-bottom:0.25rem;
+  }
+  .chip-value{font-size:0.95rem; font-weight:500;}
+
+  /* ---------- SECTION HEADING ---------- */
+  .section-head{
+    max-width:920px;
+    margin:4.2rem auto 1.6rem;
+    padding:0 1.5rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+  }
+  .section-head h2{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:2rem;
+    color:var(--azul-deep);
+    margin:0;
+    white-space:nowrap;
+  }
+  .rule{flex:1; height:1px; background:repeating-linear-gradient(90deg, rgba(35,49,58,0.4) 0 6px, transparent 6px 12px);}
+
+  /* ---------- ITINERARY ---------- */
+  .itinerary{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 1.5rem 2rem;
+    display:flex;
+    flex-direction:column;
+    gap:1.4rem;
+  }
+
+  .ticket{
+    display:grid;
+    grid-template-columns:150px 1px 1fr;
+    background:var(--paper);
+    border-radius:12px;
+    box-shadow:0 10px 24px rgba(23,34,43,0.14);
+    overflow:visible;
+    position:relative;
+  }
+  .ticket.eclipse{
+    background:var(--night);
+    color:var(--paper);
+  }
+
+  .stub{
+    padding:1.4rem 1rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:0.35rem;
+  }
+  .stamp{
+    width:78px;height:78px;
+    border-radius:50%;
+    border:2px dashed rgba(182,90,56,0.55);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    transform:rotate(-4deg);
+    color:var(--terracotta);
+  }
+  .ticket.eclipse .stamp{border-color:rgba(216,168,62,0.6); color:var(--ochre);}
+  .stamp-place{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    font-size:0.5rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .stamp-day{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.6rem;
+    line-height:1;
+  }
+  .stamp-month{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    font-size:0.6rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .weekday{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--azul-deep);
+  }
+  .ticket.eclipse .weekday{color:var(--ochre);}
+
+  .perforation{
+    position:relative;
+    background-image:repeating-linear-gradient(to bottom, rgba(35,49,58,0.35) 0 6px, transparent 6px 14px);
+    width:1px;
+  }
+  .perforation::before, .perforation::after{
+    content:"";
+    position:absolute; left:50%; transform:translateX(-50%);
+    width:18px; height:18px;
+    border-radius:50%;
+    background:var(--paper);
+  }
+  .perforation::before{top:-9px;}
+  .perforation::after{bottom:-9px;}
+  .ticket.eclipse .perforation::before,
+  .ticket.eclipse .perforation::after{background:var(--night);}
+
+  .ticket-body{
+    padding:1.5rem 1.6rem 1.6rem 1.8rem;
+  }
+  .ticket-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.35rem;
+    margin:0 0 0.9rem;
+    color:var(--azul-deep);
+    display:flex;
+    align-items:center;
+    gap:0.55rem;
+    flex-wrap:wrap;
+  }
+  .ticket.eclipse .ticket-title{color:var(--paper);}
+
+  .badge{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-size:0.65rem;
+    font-weight:600;
+    padding:0.22rem 0.6rem;
+    border-radius:999px;
+    border:1px solid currentColor;
+  }
+  .badge.booked{color:var(--olive);}
+  .badge.tbd{color:var(--terracotta);}
+  .badge.open{color:var(--azul);}
+
+  .activity-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.7rem;}
+  .activity{
+    display:flex;
+    align-items:flex-start;
+    gap:0.7rem;
+    font-size:0.98rem;
+    line-height:1.45;
+  }
+  .activity .icon{color:var(--terracotta); margin-top:0.15rem;}
+  .ticket.eclipse .activity .icon{color:var(--ochre);}
+  .a-time{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    font-weight:600;
+    letter-spacing:0.03em;
+    white-space:nowrap;
+    color:var(--azul-deep);
+    min-width:64px;
+  }
+  .ticket.eclipse .a-time{color:var(--ochre);}
+  .a-text a{color:var(--terracotta); text-decoration-thickness:1px;}
+  .ticket.eclipse .a-text a{color:var(--paper);}
+  .a-note{
+    display:block;
+    font-size:0.85rem;
+    color:rgba(35,49,58,0.65);
+    margin-top:0.1rem;
+    font-style:italic;
+  }
+  .ticket.eclipse .a-note{color:rgba(242,230,201,0.65);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;
+    padding:3.5rem 1.5rem 4rem;
+    color:rgba(35,49,58,0.6);
+  }
+  .compass{width:46px;height:46px;color:var(--terracotta); margin-bottom:0.8rem;}
+  footer p{
+    font-family:'Barlow Semi Condensed', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.2em;
+    font-size:0.72rem;
+    margin:0;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media print{
+    body{background:var(--paper);}
+    .hero{padding:1rem 1.5rem 1.8rem;}
+    .hero .sun{width:120px;height:120px;top:-45px;right:-30px;}
+    .eyebrow{margin-bottom:0.4rem;}
+    .hero h1{font-size:2.2rem;}
+    .hero-sub{margin-bottom:0.6rem; font-size:0.75rem;}
+    .date-ticket{padding:0.3rem 0.9rem; font-size:0.68rem;}
+    .note{margin-top:0.9rem; padding:0.55rem 0.9rem 0.5rem;}
+    .note p{font-size:0.95rem;}
+    .essentials{margin-top:-1rem; gap:0.5rem;}
+    .chip{padding:0.4rem 0.5rem;}
+    .chip .icon{width:13px;height:13px;margin-bottom:0.1rem;}
+    .chip-label{font-size:0.55rem;}
+    .chip-value{font-size:0.62rem;}
+    .section-head{margin:0.9rem auto 0.5rem;}
+    .section-head h2{font-size:1.1rem;}
+    .itinerary{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:0.45rem;
+      padding:0 1.5rem 0.6rem;
+    }
+    .ticket{
+      grid-template-columns:70px 1px 1fr;
+      box-shadow:none;
+      border:1px solid rgba(35,49,58,0.18);
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    .stub{padding:0.4rem 0.3rem;}
+    .stamp{width:42px;height:42px;}
+    .stamp-day{font-size:0.85rem;}
+    .stamp-place{font-size:0.32rem;}
+    .stamp-month{font-size:0.38rem;}
+    .weekday{font-size:0.48rem;}
+    .ticket-body{padding:0.5rem 0.6rem 0.6rem 0.7rem;}
+    .ticket-title{font-size:0.68rem; margin-bottom:0.3rem; gap:0.3rem;}
+    .badge{font-size:0.4rem; padding:0.1rem 0.32rem;}
+    .activity-list{gap:0.25rem;}
+    .activity{font-size:0.55rem; gap:0.32rem;}
+    .activity .icon{width:11px;height:11px;}
+    .a-time{min-width:34px;}
+    .a-note{font-size:0.5rem;}
+    footer{padding:0.6rem 1.5rem 0.8rem;}
+    .compass{width:20px;height:20px;margin-bottom:0.15rem;}
+    footer p{font-size:0.5rem;}
+  }
+
+  @media (max-width:700px){
+    .essentials{grid-template-columns:1fr;}
+    .ticket{grid-template-columns:1fr;}
+    .perforation{
+      width:100%; height:1px;
+      background-image:repeating-linear-gradient(to right, rgba(35,49,58,0.35) 0 6px, transparent 6px 14px);
+    }
+    .perforation::before, .perforation::after{
+      top:50%; transform:translateY(-50%);
+      left:auto;
+    }
+    .perforation::before{left:-9px;}
+    .perforation::after{right:-9px; left:auto;}
+    .stub{flex-direction:row; padding:1rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg style="display:none">
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M3 13l7-2 6-8 2 1-4 8 6-1 2 2-8 3-2 6-2-1 1-6-6 2z"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l2 2M14 9l2 2"/></symbol>
+  <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M4 7h4l8 10h4M4 17h4l8-10h4"/><path d="M18 4l3 3-3 3M18 20l3-3-3-3"/></symbol>
+  <symbol id="i-fork" viewBox="0 0 24 24"><path d="M7 3v8M9 3v8M7 11v10M9 11c1 1 1 3-1 3M15 3c-2 0-3 2-3 5s1 5 3 5v9"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16V11l2-5h12l2 5v5"/><path d="M2 16h20"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="16" cy="9" r="8" fill="var(--night)" stroke="none"/></symbol>
+  <symbol id="i-wine" viewBox="0 0 24 24"><path d="M7 3h10c0 5-2 8-5 8s-5-3-5-8z"/><path d="M12 11v7M8 21h8"/></symbol>
+  <symbol id="i-village" viewBox="0 0 24 24"><path d="M3 21V11l4-4 4 4v10M11 21V9l4-4 4 4v12"/><path d="M3 21h18"/></symbol>
+  <symbol id="i-suitcase" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M9 8V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V8"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6z"/></symbol>
+</svg>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sun"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Illes Balears · España</div>
+    <h1>Mallorca</h1>
+    <div class="hero-sub">Girls Trip &middot; 2026</div>
+    <div class="date-ticket">
+      <svg class="icon"><use href="#i-plane"/></svg>
+      9 &ndash; 16 August
+    </div>
+  </div>
+  <svg class="coastline" viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,40 C240,80 480,0 720,35 C960,70 1200,10 1440,40 L1440,80 L0,80 Z" fill="#F2E6C9"/>
+  </svg>
+  <div class="note">
+    <p>Hi girls! I'm so excited for our trip together &mdash; here's the plan so far, but as always we can change anything along the way. Can't wait to see you all!</p>
+    <span class="sign">&mdash; Natalia ♡</span>
+  </div>
+</section>
+
+<!-- ESSENTIALS -->
+<div class="essentials">
+  <div class="chip">
+    <svg class="icon"><use href="#i-key"/></svg>
+    <div class="chip-label">The house</div>
+    <div class="chip-value">Check-in 9 Aug, 4pm<br>Check-out 16 Aug, 11am</div>
+  </div>
+  <div class="chip">
+    <svg class="icon"><use href="#i-car"/></svg>
+    <div class="chip-label">Getting around</div>
+    <div class="chip-value">Rental car booked &mdash; free to explore</div>
+  </div>
+  <div class="chip">
+    <svg class="icon"><use href="#i-shuffle"/></svg>
+    <div class="chip-label">Good to know</div>
+    <div class="chip-value">Reservations below, but the plan can flex</div>
+  </div>
+</div>
+
+<!-- ITINERARY -->
+<div class="section-head">
+  <h2>The Plan</h2>
+  <div class="rule"></div>
+</div>
+
+<div class="itinerary">
+
+  <!-- Day 1 -->
+  <div class="ticket">
+    <div class="stub">
+      <span class="weekday">Sunday</span>
+      <div class="stamp"><span class="stamp-place">Illes Balears</span><span class="stamp-day">09</span><span class="stamp-month">Aug</span></div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-body">
+      <h3 class="ticket-title">Arrival day <span class="badge open">No reservation</span></h3>
+      <ul class="activity-list">
+        <li class="activity"><svg class="icon"><use href="#i-plane"/></svg><div class="a-text"><span class="a-time">9:00</span> Landing in Mallorca</div></li>
+        <li class="activity"><svg class="icon"><use href="#i-key"/></svg><div class="a-text"><span class="a-time">16:00</span> House opens</div></li>
+        <li class="activity"><svg class="icon"><use href="#i-fork"/></svg><div class="a-text"><span class="a-time">Lunch</span> Mercat in Palma <span class="a-note">no reservation needed</span></div></li>
+        <li class="activity"><svg class="icon"><use href="#i-fork"/></svg><div class="a-text"><span class="a-time">Dinner</span> At the house</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="ticket">
+    <div class="stub">
+      <span class="weekday">Monday</span>
+      <div class="stamp"><span class="stamp-place">Illes Balears</span><span class="stamp-day">10</span><span class="stamp-month">Aug</span></div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-body">
+      <h3 class="ticket-title">Beach day <span class="badge booked">Booked</span></h3>
+      <ul class="activity-list">
+        <li class="activity"><svg class="icon"><use href="#i-sun"/></svg><div class="a-text"><span class="a-time">Day</span> Beach time</div></li>
+        <li class="activity"><svg class="icon"><use href="#i-fork"/></svg><div class="a-text"><span class="a-time">20:30</span> Dinner at Coloma, Palma</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="ticket">
+    <div class="stub">
+      <span class="weekday">Tuesday</span>
+      <div class="stamp"><span class="stamp-place">Illes Balears</span><span class="stamp-day">11</span><span class="stamp-month">Aug</span></div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-body">
+      <h3 class="ticket-title">Deià &amp; Valldemossa <span class="badge tbd">TBD</span></h3>
+      <ul class="activity-list">
+        <li class="activity"><svg class="icon"><use href="#i-car"/></svg><div class="a-text"><span class="a-time">Day</span> Road trip through the villages &mdash; schedule to be decided together</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 4 - Eclipse -->
+  <div class="ticket eclipse">
+    <div class="stub">
+      <span class="weekday">Wednesday</span>
+      <div class="stamp"><span class="stamp-place">Andratx</span><span class="stamp-day">12</span><span class="stamp-month">Aug</span></div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-body">
+      <h3 class="ticket-title">Andratx &amp; Solar Eclipse <span class="badge booked" style="color:var(--ochre)">Booked</span></h3>
+      <ul class="activity-list">
+        <li class="activity"><svg class="icon"><use href="#i-moon"/></svg><div class="a-text"><span class="a-time">19:00</span> Solar eclipse viewing in Andratx, followed by a small party</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="ticket">
+    <div class="stub">
+      <span class="weekday">Thursday</span>
+      <div class="stamp"><span class="stamp-place">Illes Balears</span><span class="stamp-day">13</span><span class="stamp-month">Aug</span></div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-body">
+      <h3 class="ticket-title">Hotel Corazón &amp; Sóller <span class="badge booked">Booked</span></h3>
+      <ul class="activity-list">
+        <li class="activity"><svg class="icon"><use href="#i-fork"/></svg><div class="a-text"><span class="a-time">13:30</span> Lunch at Hotel Corazón</div></li>
+        <li class="activity"><svg class="icon"><use href="#i-village"/></svg><div class="a-text"><span class="a-time">20:30</span> Dinner at Pueblo, Sóller</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="ticket">
+    <div class="stub">
+      <span class="weekday">Friday</span>
+      <div class="stamp"><span class="stamp-place">Illes Balears</span><span class="stamp-day">14</span><span class="stamp-month">Aug</span></div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-body">
+      <h3 class="ticket-title">Bodega Binaraix <span class="badge booked">Booked</span></h3>
+      <ul class="activity-list">
+        <li class="activity"><svg class="icon"><use href="#i-wine"/></svg><div class="a-text"><span class="a-time">20:00</span> Dinner at Bodega Binaraix <span class="a-note">small party after</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="ticket">
+    <div class="stub">
+      <span class="weekday">Saturday</span>
+      <div class="stamp"><span class="stamp-place">Illes Balears</span><span class="stamp-day">15</span><span class="stamp-month">Aug</span></div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-body">
+      <h3 class="ticket-title">Four Seasons Beach &amp; Pollença <span class="badge booked">Booked</span></h3>
+      <ul class="activity-list">
+        <li class="activity"><svg class="icon"><use href="#i-sun"/></svg><div class="a-text"><span class="a-time">Day</span> Beach at Four Seasons</div></li>
+        <li class="activity"><svg class="icon"><use href="#i-fork"/></svg><div class="a-text"><span class="a-time">13:00</span> Lunch at <a href="https://www.opentable.es/r/llum-i-sal-pollenca" target="_blank" rel="noopener">Llum i Sal</a>, Pollença</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 8 -->
+  <div class="ticket">
+    <div class="stub">
+      <span class="weekday">Sunday</span>
+      <div class="stamp"><span class="stamp-place">Illes Balears</span><span class="stamp-day">16</span><span class="stamp-month">Aug</span></div>
+    </div>
+    <div class="perforation"></div>
+    <div class="ticket-body">
+      <h3 class="ticket-title">Departure day <span class="badge open">House check-out</span></h3>
+      <ul class="activity-list">
+        <li class="activity"><svg class="icon"><use href="#i-suitcase"/></svg><div class="a-text"><span class="a-time">11:00</span> Leave the house</div></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <svg class="compass"><use href="#i-compass"/></svg>
+  <p>Mallorca &middot; Illes Balears &middot; See you on the island</p>
+</footer>
+
+</body>
+</html>
